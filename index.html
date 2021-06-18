@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+    <meta name="author" content="Leonan Thomaz de Oliveira">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <script src="js/script.js"></script>
+    <script src="js/wpp.js"></script>
+    <script src="js/pages.js"></script>
+
+    <title>Integração com whatsApp</title>
+
+</head>
+
+<body>
+    
+
+    <!-- Opções de lanche // itens.css -->
+
+
+    <section class="lanches" id="lanches">
+        <div>
+            <div>          
+
+    <article class="itens-container">
+
+        <!-- Hamburguer -->
+        <h1 class="titulopedidos">Pedido</h1>
+                    
+        <div class="item-info item-info-1">
+
+            <div class="wow scale-up-center">
+            <div class="item-img">
+                
+                <img src="img/hamburger1.jpg" alt="Hamburguer">
+                
+            </div>
+            </div>
+
+            <div class="item-txt">
+                <strong><b>Hamburguer</b></strong>  
+                <span class="item-sub-txt">Carne, queijo, alface, tomate e molho especial</span>    
+            </div>
+
+            <div class="item-numeros-container">
+                <div class="item_valor">
+                    <div><b>R$ 7,00</b></div>
+                </div>
+
+                <div class="pedido1">
+
+                    <div class="item_quant">
+
+                    
+                        <div align="center"> 
+                                
+                                <div class="number-input">
+                                    <td><i onclick="adicionarItem(1);this.parentNode.querySelector('input[type=number]').stepUp()" value="1" class="material-icons green-text" style="cursor: pointer;" class="plus">add_circle</i></td>
+                                    </button>
+                                    <input class="quantity" id="quantidade1" placeholder="" id="Hamburguer" alt="Hamburguer" name="Hamburguer" value="" min="0" max="" type="number">
+                                    <td><i onclick="removerItem(1);this.parentNode.querySelector('input[type=number]').stepDown()" value="1" class="material-icons green-text" style="cursor: pointer;" class="minus">remove_circle</i></td>
+
+                                </div>
+
+                                <td>
+                                    <div id="box-total"><b>
+                                        Total R$<span id="total1" >0,00</span>
+                                    </b>
+                                    </div>
+                                </td>
+
+                                <!-- VALOR TOTAL DOS ITENS ADICIONADOS AO CARRINHO -->
+
+                                <div id="subtotal-box">    
+                                    <div class="s12 l6 offset-l6">
+                                            <h2 class="blue-text text-darken-1 flow-text">Total da Compra: R$<span id="valorTotalCompra">00,00   </span></h2>
+                                    </div>
+                                </div>
+
+                    
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- REMOVER PRODUTO DA LISTA -->
+                <td><i onclick="removerProduto(1)" class="material-icons blue-text text-darken-1" style="cursor: pointer">delete</i></td>
+
+            </div>
+
+        </div>
+                 
+    </article>
+                
+    </section>
+
+
+    <article class="itens-container">
+
+       <!-- Pedido/Formulário para o Whatsapp -->
+
+    <section id="pedido" class="pedido ">
+        <div>
+            <h1 class="titulopedidos">Formulário</h1>
+            <p></p>
+        </div>
+  
+        <div class="flex-container">
+            <div class="divinput">
+                <form action="#" method="GET" name="form_pedido" id="form_pedido">
+                    <fieldset class="manuzao">
+                        <fieldset class="grupo">
+                            <div class="campo">
+                                <label for="nome"><div class="nomenome">Nome</div></label><br>
+                                <input type="text" name="nome" id="nome" width="10em" placeholder="Nome e Sobrenome"
+                                    onblur="return Vnome()">
+                            </div>
+                        </fieldset>
+                        <div class="campo">
+                            <label for="endereco">Endereço</label>
+                            <input type="text" name="endereco"
+                                placeholder="Ex: Estrada das Furnas" id="endereco" width="10em"
+                                onblur="return Vendereco()">
+                        </div>
+                        <div class="campo">
+                            <label for="numero">Número</label>
+                            <input type="text" name="numero" placeholder="Ex: 2800" id="numero"
+                                onblur="return Vnumero()">
+                        </div>
+                        <fieldset class="grupo">
+                            
+
+                            <div class="campo">
+                                <label for="bairro">Região</label>
+                                <div class="box">
+
+                                    <select onblur="return Vbairros()" name="bairro" required id="">
+                                        <option value="">Selecione a Região</option>
+                                        <option value=3,00>Copacabana</option>
+                                        <option value=4,00>Leblon</option>
+                                        <option value=5,00>Laranjeiras</option>
+                                        <option value=6,00>Botafogo</option>
+                                        <option value=7,00>Flamengo</option>
+                                        <option value=10,00>Catete</option>
+                                        <option value=0,00>Outros</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+
+
+                        <fieldset class="grupo">
+                            <div class="pagpag">
+                                <div class="campo pagamento">
+                                    <label>Cartão</label>
+                                    <label type="button" class="cartaozinho"><div class="wow bounceInLeft"><img src="img/cardbranco.png"></div>
+                                    <input type="radio" name="pagamento" id="cartao">
+                                    </label>
+                                </div>
+                                <div class="campo">
+                                    <label>Dinheiro</label>
+                                    <label type="button"  class="dinheirinho"><div class="wow bounceInLeft"><img src="img/dimdim.png"></div>
+                                    <input type="radio" name="pagamento" id="dinheiro">
+                                    </label>
+                                </div>
+                            </div>  
+                        </fieldset>
+
+                        <div class="campo">
+                            <label for="troco">Precisa de troco?</label>
+                            <input type="text" placeholder="Ex: 100" name="troco" id="troco" value=""
+                                placeholder="Digite o valor">
+                        </div>
+
+                        <div class="campo">
+                            <label for="cupom">Cupom de desconto</label>
+                            <input type="text" name="cupom" id="cupom"
+                                placeholder="Insira aqui seu cupom promocional :)">
+                        </div>
+                        <div class="campo">
+                            <textarea rows="6" id="mensagem" name="mensagem" placeholder="Observações"></textarea>
+                        </div>
+                        <h4>Ao finalizar seu pedido será enviado a nossa Central de Atendimento no Whatsapp!</h>
+                        <div class="campo">
+                            
+                            <input id="enviar" type="button" value="Finalizar pedido" class="botao">
+                        </div>
+                    </fieldset>
+                </form>
+            </div>    
+        </div>
+    </section>
+    </article>
+
+        <script src="jquery-3.5.0.min.js"></script>
+        <script src="js/script.js"></script>
+        <script src="js/wpp.js"></script>
+        <script src="js/pages.js"></script>
+                        
+</body>
+</html>
